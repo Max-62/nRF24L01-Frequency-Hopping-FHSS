@@ -71,12 +71,7 @@ void setup()
 	radio.setRetries(4,9);
 	radio.setAutoAck(1);
 	radio.enableAckPayload();
-	if(sizeof(data_RX)>sizeof(data_TX)) {
-		radio.setPayloadSize(sizeof(data_RX));
-	} else {
-		radio.setPayloadSize(sizeof(data_TX));
-	}
-//	radio.setPayloadSize(16);
+	radio.enableDynamicPayloads();
 	radio.setDataRate(RF24_250KBPS);
 	radio.setChannel(fhss_schema[ptr_fhss_schema]);
 	radio.openWritingPipe(pipes[1]);
